@@ -1,5 +1,5 @@
 from pygame import*
-from settings import WINDOW_WIDTH, WINDOW_HEIGHT,WHITE
+from settings import WINDOW_WIDTH, WINDOW_HEIGHT,WHITE,KEYS
 from keys import create_key_rects, draw_keys
 from sounds import load_sounds
 init()
