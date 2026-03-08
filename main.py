@@ -20,7 +20,17 @@ while running:
             running = False
         #клавіатура
         if e.type == KEYDOWN:
-            pass
+            k = key.name(e.key)
+            if k in sounds:
+                sounds[k].play()
+                idx = keys_list.index(k)
+                pressed_keys.add(idx)
+        if e.type == KEYUP:
+            k = key.name(e.key)
+            if k in sounds:
+                idx = keys_list.index(k)
+                if idx in pressed_keys:
+                    pressed_keys.remove(idx)
         #миша
         if e.type == MOUSEBUTTONDOWN:
             pos = e.pos
