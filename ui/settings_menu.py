@@ -10,4 +10,20 @@ class SettjngsMenu:
         self.on_back = on_back
         cx = screen_rect.centerx
         top = 140
-        
+
+        back_idle = pygame.transform.scale(
+            pygame.image.load('/assets/images/buttons/exit_unhover.png'),
+            (48,48)
+        )
+        back_hover = pygame.transform.scale(
+            pygame.image.load('/assets/images/buttons/exit_hover.png'),
+            (48,48)
+        )
+
+        self.back_btn = Button(
+            40,30,48,48,
+            '',
+            self._back,
+            img_idle=back_idle,
+            img_hover=back_hover
+        )
