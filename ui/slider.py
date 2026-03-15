@@ -40,3 +40,17 @@ class Slider:
                 text = font.render(f'{self.label}: {vtxt}',1,(0,0,0))
                 screen.blit(text, (self.track_rect.left, self.track_rect.top - 28))
                 self._hit_rect.center = (hx,hy)
+    def handle_event(self, event):
+        old = self.value
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if self.track_rect.collidepoint(event.pos) or self._hit_rect.collidepoint(event.pos):
+                self.dragging = True
+                self.value = self._pos_to_val(event.pos[0])
+        elif event.type == pygame.MOUSEMOTION and self.dragging:
+            self.value = self._pos_to_val(event.pos[0])
+        elif event.type == pygame.MOUSEBUTTONUP and self.dragging:
+            self.dragging = False
+            self.value = self._pos_to_val(event.pos[0])
+        
+        if self.value != old and hasattr(self, 'on_change') and self.on_change:
+            self.on_change(self.value)
