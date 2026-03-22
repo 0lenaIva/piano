@@ -31,7 +31,7 @@ class ToggleSwitch():
             screen.blit(ts, (r.right + 10, r.y + (r.h - ts.get_height())//2))
 
     def handle_event(self,event):
-        if event.type == MOUSEBUTTONDOWN and self.rect.collidepoint(mouse.get_pos):
+        if event.type == MOUSEBUTTONDOWN and self.rect.collidepoint(mouse.get_pos()):
             self.value = not self.value 
             if self.on_change:
                 self.on_change(self.value)
