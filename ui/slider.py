@@ -25,7 +25,6 @@ class Slider:
         if self.step>0:
             v = round(v/self.step) * self.step
         return max(self.min, min(self.max, v))
-    # slider.py
     def _pos_to_val(self, px=None):
         if px is None:
             ratio = (self.value - self.min) / (self.max - self.min)
